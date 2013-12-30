@@ -1,0 +1,401 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/page_style.css" />
+		<title>Première partie du TPE (Jean-Baptiste Saillan & Raphael Chabal)</title>
+
+		<!--CSS pour la première partie-->
+		<link rel="stylesheet" href="css/partie1_style.css" />
+	</head>
+
+	
+	<body id="haut" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
+	
+		<!--Boutons "home" et "up"-->
+		<div id="fixe">
+			<ul>
+				<li> <a href="index.html" title="Retour à la page d'accueil" id="1"></a> </li>
+				<li> <a href="#haut" title="Retour en haut de la page" id="2"></a> </li>
+			</ul>
+		</div>
+		
+		<!--En-tête de la page-->
+		<header>
+			<!--Titre et sous-titre de la page-->
+			<div id="titres">
+				<h1>TPE</h1>
+				<h2>Raphael Chabal</h2>
+				<h2>Jean-Baptiste Saillan</h2>
+			</div>
+			<!--Menu avec les pages principales du site-->
+			<nav>
+				<ul>
+					<li> <a href="introduction.html">Introduction</a> </li>
+					<li> <a href="partie1.html"><span id="selectionne">Première partie</span></a> </li>
+					<li> <a href="partie2.html">Deuxième partie</a> </li>
+					<li> <a href="partie3.html">Troisième partie</a> </li>
+					<li> <a href="conclusion.html">Conclusion</a> </li>
+				</ul>
+			</nav>
+			<!--Bannière-->
+			<div id="banniere">
+				<!--Slider du site-->
+				<div id="slider">
+					<ul>
+						<li> <img src="images/avion_intro.jpg" alt="" /> </li>
+						<li> <img src="images/avion_intro2.jpg" alt="" /> </li>
+						<li> <img src="images/avion_intro3.jpg" alt="" /> </li>
+						<li> <img src="images/avion_intro.jpg" alt="" /> </li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<!--Fin de l'en-tête-->
+
+
+		<!--Corps de la page-->
+		<div id="corps">
+			<section>
+				<!--Plan détaillé de la partie concernée-->
+				<ul id="plan">
+					<li> <a href="#tag_introduction">-Introduction</a> </li>
+					<li> 
+						<a href="#tag_instruments_vols">I- Les instruments de vol</a>
+						<ul>
+							<li> <a href="#tag_altimetre">a) L'altimètre</a> </li>
+							<li> <a href="#tag_variometre">b) Le variomètre</a> </li>
+							<li> <a href="#tag_horizonartificiel">c) L'horizon artificiel</a> </li>
+							<li> <a href="#tag_compas">d) Le compas magnétique</a> </li>
+						</ul>
+					</li>
+					<li> 
+						<a href="#tag_radionavigation">II- La radionavigation</a> 
+						<ul>
+							<li> <a href="#tag_ndb_adf">a) Le NDB et l'ADF</a> </li>
+							<li> <a href="#tag_dme">b) Le DME</a> </li>
+							<li> <a href="#tag_radioaltimetre">c) Le Radioaltimètre</a> </li>
+							<li> <a href="#tag_modele_experience">d) Modèle d'expérience résumant la radionavigation</a> </li>
+						</ul>
+					</li>
+				</ul>
+			
+				<article>
+					<!--Début de l'intro-->
+					<p id="tag_introduction">
+						Le système de géolocalisation par satellite a été utilisé dans l’aviation civile à partir des années 2000. Avant cette date, différents instruments permettaient aux pilotes de se repérer dans l'espace. Nous les avons classés dans deux catégories : les instruments de vol et les instruments de radionavigation. Ces deux catégories sont complémentaires car elles ont chacune des fonctions différentes. 
+					</p>
+
+					<h1 id="tag_instruments_vols">I- Les instruments de vols</h1>
+					<p>
+						Dans le cockpit de l'avion, le pilote fait face au <em>tableau de bord</em>. Celui-ci, grâce aux instruments de mesures, affiche de nombreuses données. Ces données sont indispensables au pilote pour une bonne navigation.
+					</p>
+
+					
+					<h2 id="tag_altimetre">a) L'altimètre</h2>
+					<p>
+						L’altimètre est un instrument indiquant au pilote de l’avion à quelle <em>altitude</em> il se trouve. Pour évaluer cette altitude, l’altimètre mesure une variation de pression atmosphérique à l’aide d’un baromètre.
+							<br />
+						Tout d’abord, on peut définir la pression atmosphérique par : la pression exercée par la couche d'air en un lieu donné (dans notre cas, l’avion ou plus précisément le capteur de l’altimètre) et mesurée en en hectopascals ou en bars à l'aide d'un baromètre (cf « Encyclopédie Larousse », Pression atmosphérique). Plus on est en altitude, plus la couche d’air en un lieu donné (et donc la pression) diminue.
+							<br />
+						A l’aide d’un baromètre, l’altimètre calcule donc la variation de pression atmosphérique et retourne une altitude en pieds (ft, 1ft~3/10m) ou plus rarement en mètres (m).
+							<br />
+						Voici la formule permettant de calculer l’altitude de l’appareil (z) en fonction de la température, de la pression atmosphérique au niveau de la mer et de la pression atmosphérique au niveau de l’appareil :
+							<h5>PLACER LA FORMULE</h5>
+						<ul>
+						 <li>g la constante gravitationnelle</li>
+						 <li>T la température en °C (donc T+273 = T en °K)</li>
+						 <li>Po la pression atmosphérique au niveau de la mer</li>
+						 <li>P la pression atmosphérique au niveau du baromètre</li>
+						</ul>
+						Il faut prendre en compte que la valeur de Po (pression atmosphérique au niveau de la mer) est variable suivant la météo. Dans des conditions dites « normales », Po = 1013mBars. Cependant, lors de dépressions ou d’anticyclones cette valeur peut changer. C’est pourquoi, dans certains cas, le pilote devra <strong>étalonner</strong> l’altimètre, c'est-à-dire modifier la valeur de référence Po afin de prévenir des imprécisions.
+							<br />
+						L’altimètre donne une bonne estimation de l’altitude, même s’il existe quelques erreurs dues aux changements météorologiques ou de température.
+					</p>
+				</article>
+			</section>
+
+			<!--HTML pour le script de l'altimètre-->
+			<figure>
+				<div id="test_altimetre">
+					<div id="colonne_gauche">
+						<form method="get" name="altimetre" action="test_altimetre.html">
+							<p>
+								<input type="number" size="3" id="affichage_pression_avion" value="500" min="50" max="1000" />hPa
+									<br />
+								<span id="plus_moins">-</span> <input type="range" id="pression_avion" name="pression_avion" value="500" min="50" max="1000" step="1" onchange="calcul(pression_avion.value, pression_mer)"> <span id="plus_moins">+</span>
+							</p>
+							<p>
+								<label for="pression_avion">Modifier la pression mesurée par l'altimètre au niveau de l'avion</label>
+							</p>
+						</form>
+						<div id="schema_altimetre">
+							<p>
+								<img id="schema_altimetre_avion" src="images/partie1/schema_avion_altimetre.png" alt="Petit avion" />
+								<span id="resultat_schema_avion">5949 mètres</span>	
+							</p>
+						</div>
+					</div>
+				
+					<div id="colonne_droite">
+						<div id="pression_mer">
+							<ul>
+								<li id="depression" class="pression_mer_survol" onclick="pression_mer=meteo(this.id, document.getElementById('pression_avion').value)"> 
+									Dépression (1000hPa)
+								</li>
+								<li id="normal" class="pression_mer_selectionne" onclick="pression_mer=meteo(this.id, document.getElementById('pression_avion').value)"> 	Météo normale (1013hPa)
+								</li>
+								<li id="anticyclone" class="pression_mer_survol" onclick="pression_mer=meteo(this.id, document.getElementById('pression_avion').value)"> 
+									Anti-cyclone (1080hPa)
+								</li>
+							</ul>
+							<p id="legende_meteo">
+								Etalonnage de l'altimètre : choisissez (en cliquant) la météo et la pression atmosphérique au niveau de la mer.
+							</p>
+						</div>
+						<div id="formule_donnee">
+							<p>
+								Formule donnée:
+									<br />
+								z = (287(T + 273)/g)*ln(Po/P)
+							</p>
+						</div>
+						<div id="valeurs">
+							<ul> 
+								<li> P la pression au niveau de l'avion: <span id="set_pression_avion">500</span>hPa. </li>
+								<li> Po la pression au niveau de la mer: <span id="set_pression_mer">1013</span>hPa. </li>
+								<li> g la constante gravitationelle ~9.81</li>
+								<li> T température au niveau de la mer en °c (ici 15°C)</li>
+							</ul>
+						</div>
+						<div id="formule_resultat">
+							<p>
+								<span id="formule_actualisee">z = (287(15 + 273)/g)*ln(1013/500)</span>
+							</p>
+							<p>
+								<span id="resultat">z = 5949</span> mètres d'altitude.
+							</p>
+						</div>
+					</div>
+				</div>
+			</figure>
+			<!--Fin script altimètre-->
+
+			<section>
+				<article>
+					<h2 id="tag_variometre">b) Le variomètre</h2>
+					<p>
+						Le variomètre permet d’indiquer au pilote s’il monte ou descend en lui fournissant sa vitesse verticale.
+						Comme l’altimètre, il utilise un baromètre qui détecte des variations de pression, celui-ci est couplé à un chronomètre. Ces deux instruments retournent donc au pilote la vitesse verticale de l’appareil en ft/mn ou m/s.
+							<br />
+						Le variomètre n’est cependant pas très précis et délivre les informations au pilote avec un léger retard. Il ne doit donc pas être utilisé pour se localiser ou pour piloter à proprement parler. Mais plutôt pour détecter si l’appareil est en train de descendre ou de monter (sur ce point, il est plus efficace que l’altimètre). On l’utilise également pour calculer un temps de descente ou de montée.
+					</p>
+
+					<h2 id="tag_horizonartificiel">c) L'horizon artificiel</h2>
+					<p>
+						L’horizon artificiel  est un instrument de mesure  qui permet d’indiquer au pilote la position de l’avion par rapport à l’horizon réel. En effet, il lui indique si il est incliné vers le côté gauche ou droite (et donc qu’il tourne) ou vers le haut ou le bas (et donc qu’il monte ou qu’il descend).
+							<br />
+						Pour fonctionner, cet instrument a besoin de connaître la position de l’horizon réel. Pour cela, il utilise un gyroscope avec un axe vertical et qui détermine la verticale du lieu de l’avion. Lorsque celui-ci change d’inclinaison, l’avion et ses capteurs changent d’inclinaison tandis que l’axe vertical du gyroscope reste le même.
+							<br />
+						Dans le cockpit de l’avion, la partie visible de l’horizon artificiel est composé d’une partie fixe et d’une partie mobile.
+						La partie mobile reste alignée à l’axe vertical. Donc, lorsque l’avion s’incline, la partie mobile indique toujours l’horizon réel.
+						Sur la partie fixe on peut observer une « représentation » de l’avion. Donc lorsque l’avion s’incline, sa représentation aussi.
+						Des graduations, présentes sur les deux parties, indiquent au pilote de combien de degrés il est incline à droite, à gauche, vers le haut ou vers le bas.
+					</p>
+				</article>
+			</section>
+
+			<!--Début du script sur l'horizon artificiel-->
+			<figure id="figure_horizon">
+				<div id="conteneur_horizon">
+					<div id="illustration_horizon">
+
+						<div id="horizon_artificiel">
+							<div id="partie_fixe"></div>
+							<div id="partie_mobile"></div>
+						</div>
+
+						<div id="illustration_avion">
+							<div id="avion"></div>
+							<div id="gyroscope"></div>
+						</div>
+
+						<div id="direction">
+							<div id="tourne_droite" onmouseover="tourne(30)" onmouseout="tourne(0)"></div>
+							<div id="tourne_gauche" onmouseover="tourne(-30)" onmouseout="tourne(0)"></div>
+						</div>
+
+						<figcaption>
+							<p>A gauche un schéma de l'avion, où <img src="images/partie1/gyroscope.png" alt="Représentation d'un gyroscope"> représente le gyrsocope qui garde la verticale. A droite, le cadran de l'horizon artificiel.</p>
+							<h1>Survolez le levier de commande afin de faire incliner l'avion à droite ou à gauche et observer les changements qui s'opèrent.</h1>
+						</figcaption>
+
+					</div>
+				</div>
+			</figure>
+
+			<section>
+				<article>
+
+					<h2 id="tag_compas">d) Le compas magnétique</h2>
+					<p>
+						Le compas magnétique indique continuellement le Nord (magnétique). Il permet au pilote de conserver un cap. Cependant, le compas à des limites. En effet, il perd en précision dès qu’il y a des variations de trajectoire. De plus il est sensible aux accélérations de l’avion mais également aux orages.
+					</p>
+
+					<h1 id="tag_radionavigation">II- La radionavigation</h1>
+
+					<p>
+						Les instruments de mesures ne fournissent pas toutes les informations nécessaires au pilote pour se repérer dans l’espace. C’est pour cela qu’ils sont secondés par les <strong>instruments de radionavigation</strong>.
+							<br />
+						La radionavigation sert à géolocaliser l’avion en utilisant des <em>ondes radioélectriques</em>. Elle fonctionne à l'aide d'instruments placés en dehors de l'avion (des émetteurs placés le plus souvent au sol) et d’autres instruments placés dans l'avion (des récepteurs). 
+					</p>
+					<p>
+						Un émetteur (dans notre cas radioélectrique) est un appareil électronique qui grâce a des antennes émet des ondes électromagnétiques. Son rôle est de transmettre des informations par les airs (comme l’heure à laquelle els signaux sont émis). L'utilisation des émetteurs radio est très réglementée. 
+							<br />
+						Le récepteur radio, quant à lui, est un appareil électronique ayant pour but de capter et de décoder des ondes électromagnétiques émises par des émetteurs, afin d’extraire les informations qu’elles contiennent.
+					</p>
+
+					<h2 id="tag_ndb_adf">a) Le NDB et l'ADF</h2>
+					<p>
+						L'ADF (automatic direction finder) ou radio-compas correspond à un récepteur a l'intérieur de l'avion tandis que l'NDB (non directional beacon) correspond à la station au sol, émettant le signal.
+					</p>
+					<ul>
+						<li>L'<strong>ADF</strong> est constitué d'une antenne, de plusieurs récepteurs, d'une boite de commande et d'un indicateur. Sa portée varie selon le matériel. Elle sera plus élevée le jour que la nuit.</li>
+						<li>L'<strong>NDB</strong> est l'instrument de radionavigation le plus ancien. C'est un émetteur radioélectrique constitué d'une antenne aussi appelée station au sol. Il envoi un signal d'une portée de 185 à 350km. Ce signal est envoyé dans toutes les directions avec une fréquence comprise entre 190 à 1750 kHz. Les NDB sont le plus souvent installés par paires : un émetteur principal et un émetteur de secours si il y a un problème avec le principal.</li>
+					</ul>
+					<p>
+						Ces deux éléments, permettent de localiser l'avion dans l'espace. Afin de comprendre comment, vous pouvez vous reporter au modèle réalisé plus bas.
+					</p>
+
+					<h2 id="tag_dme">b) Le DME</h2>
+					<p>
+						Le <strong>DME</strong>, est un émetteur (au sol) qui a pour but de mesurer la distance qui sépare l'avion du sol. Pour cela le DME chronomètre le temps que met une impulsion radioélectrique pour faire l’aller/retour entre l'avion et l’émetteur. Cette distance est une droite entre la balise au sol et l'avion. Donc, quand l'avion survole la balise, la distance qui sépare l'avion de la piste est indiquée au pilote.  
+							<br />
+						La portée du DME augmente avec l'altitude est se situe dans les environs de 200 Nm (370km) avec une précision aux alentours de 0,2 Nm.
+					</p>
+
+					<h2 id="tag_radio_altimetre">c) le radio altimètre</h2>
+					<p>
+					Le <strong>radioaltimètre</strong> aussi appelé <em>radar altimètre</em>, mesure la distance qui sépare l'avion du sol. C'est une aide lors d'un atterrissage, par exemple.
+						<br />
+					La hauteur 0 correspond au moment ou la roue de l'avion entre en contact avec le sol lors de l'atterrissage. Quand l'avion est en mode : atterrissage automatique, c'est le radioaltimètre qui, après avoir évalué la hauteur réelle entre l'avion est la piste donne l'ordre au pilote automatique de réduire la vitesse pour que l’atterrissage se passe bien. En général un avion de transport possède 2 ou 3 radioaltimètres. Chaque équipement de radioaltimètre est composé d'un émetteur ou récepteur installé dans l'avion et de deux antennes une pour l'émission et une pour la réception  placé à proximité des récepteurs ou émetteurs.
+						<br />
+					Ce système de navigation mesure la hauteur de l’avion en chronométrant le temps mis par les ondes électromagnétiques pour aller jusqu’au sol, se réfléchir et revenir vers les antennes de réception.
+					</p>
+
+					<h2 id="tag_modele_experience">d) Modèle d'exprience résumant la radionavigation</h2>
+					<p>
+					Tous les instruments de radionavigation utilisent plus ou moins le même principe. On peut le résumer en utilisant un modèle simple. A l’aide d’un banc optique et d’une alidade, on souhaite mesurer la hauteur d’un objet (par rapport à la hauteur du banc optique).
+						<br />
+					Le banc d’optique (mesurant habituellement 180cm) est placé horizontalement. Ensuite, on dispose un objet en hauteur, au dessus de l’extrémité du banc optique, de manière à ce qu’il forme un angle droit avec celui-ci. Puis, avec l’alidade, on vise l’objet et on mesure l’angle &alpha;.
+					Etant dans un triangle rectangle, connaissant la longueur du banc optique et de l’angle &alpha;, on calcule aisément la hauteur &chi; de l’objet :
+					</p>
+					<ul style="list-style-type: none;">
+						<li>tan(&alpha;) = &chi; / 180</li>
+						<li> &chi; = 180 x tan(&alpha;) </li>
+					</ul>
+
+				</article>
+			</section>
+		</div>
+
+		<!--Pied avec ages annexes-->
+		<footer>
+			<div id="bordure"></div>
+			<ul>
+				<li> <a href="supplement.html#sources">Sources</a> </li>
+				<li> <a href="supplement.html#remerciements">Remerciements</a> </li>
+				<li> <a href="#bordure">Codé par ...</a> </li>
+				<li> <a href="#bordure">Design inspiré de...</a> </li>
+			</ul>
+		</footer>
+
+		
+
+		<!--Javascript pour l'altimètre-->
+		<script type="text/javascript">
+			var pression_mer = 1013;
+			
+			function meteo (id, P) {
+				var pression;
+				var modif_id1;
+				var modif_id2;
+				if (id == 'depression') {
+					pression = 1000;
+					modif_id1 = 'normal';
+					modif_id2 = 'anticyclone';
+				}
+				else if (id == 'anticyclone') {
+					pression = 1080;
+					modif_id1 = 'normal';
+					modif_id2 = 'depression';
+				}
+				else {
+					pression = 1013;
+					modif_id1 = 'depression';
+					modif_id2 = 'anticyclone';
+				}
+
+				document.getElementById("set_pression_mer").innerHTML = pression;
+
+				document.getElementById(id).className='pression_mer_selectionne';
+				document.getElementById(modif_id1).className='pression_mer_survol';
+				document.getElementById(modif_id2).className='pression_mer_survol';
+
+				calcul(P, pression);
+
+				return pression;
+			}
+
+			function calcul(P, Po) {
+				var logarithme = Math.log(Po / P);
+				var resultat = Math.floor(((287*(15+273))/9.81) * logarithme);
+				var coordonnees_avion = resultat / 129;
+
+					if (coordonnees_avion >= 128) {
+						coordonnees_avion = 128;
+					}
+
+
+				document.getElementById("set_pression_avion").innerHTML = P;
+				document.getElementById("affichage_pression_avion").value = P;
+
+				document.getElementById("formule_actualisee").innerHTML = 'z = (287(T + 273)/g)*ln(' + Po + '/' + P + ')';
+				document.getElementById("resultat").innerHTML = 'z = ' + resultat;
+
+				document.getElementById("schema_altimetre_avion").style.bottom = coordonnees_avion + "px";
+				document.getElementById("resultat_schema_avion").innerHTML = resultat + "mètres";
+			}
+		</script>
+
+		<!--Script permettant la rotation d' l'horizon artificiel-->
+		<script type="text/javascript">
+			function tourne(degre) {
+				document.getElementById('direction').style.MozTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('avion').style.MozTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('partie_mobile').style.MozTransform = 'rotate(' + -degre + 'deg)';
+
+				document.getElementById('direction').style.webkitTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('avion').style.webkitTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('partie_mobile').style.webkitTransform = 'rotate(' + -degre + 'deg)';
+
+				document.getElementById('direction').style.msTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('avion').style.msTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('partie_mobile').style.msTransform = 'rotate(' + -degre + 'deg)';
+
+				document.getElementById('direction').style.OTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('avion').style.OTransform = 'rotate(' + degre + 'deg)';
+				document.getElementById('partie_mobile').style.OTransform = 'rotate(' + -degre + 'deg)';
+
+				document.getElementById('direction').style.transform = 'rotate(' + degre + 'deg)';
+				document.getElementById('avion').style.transform = 'rotate(' + degre + 'deg)';
+				document.getElementById('partie_mobile').style.transform = 'rotate(' + -degre + 'deg)';
+				}
+		</script>
+
+
+	</body>
+	
+</html>
+

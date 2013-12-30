@@ -1,0 +1,215 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/page_style.css" />
+		<title>Introduction du TPE (Jean-Baptiste Saillan & Raphael Chabal)</title>
+
+		<!--Style et script pour la frise-->
+		<link rel="stylesheet" href="css/style_frise.css" media="screen" />
+		<script src="js/lib_jquery.js"></script>
+		<script src="js/jquery.timelinr-0.9.53.js"></script>
+		<script>
+			$(function(){
+				$().timelinr({
+				arrowKeys: 'true'
+				})
+			});
+		</script>
+		<!--Fin de la frise-->
+
+	</head>
+
+	
+	<body id="haut" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
+	
+		<!--Boutons "home" et "up"-->
+		<div id="fixe">
+			<ul>
+				<li> <a href="index.html" title="Retour à la page d'accueil" id="1"></a> </li>
+				<li> <a href="#haut" title="Retour en haut de la page" id="2"></a> </li>
+			</ul>
+		</div>
+		
+		<!--En-tête de la page-->
+		<header>
+			<!--Titre et sous-titre de la page-->
+			<div id="titres">
+				<h1>TPE</h1>
+				<h2>Raphael Chabal</h2>
+				<h2>Jean-Baptiste Saillan</h2>
+			</div>
+			<!--Menu avec les pages principales du site-->
+			<nav>
+				<ul>
+					<li> <a href="introduction.html"><span id="selectionne">Introduction</span></a> </li>
+					<li> <a href="partie1.html">Première partie</a> </li>
+					<li> <a href="partie2.html">Deuxième partie</a> </li>
+					<li> <a href="partie3.html">Troisième partie</a> </li>
+					<li> <a href="conclusion.html">Conclusion</a> </li>
+				</ul>
+			</nav>
+			<!--Bannière-->
+			<div id="banniere">
+				<!--Slider du site-->
+				<div id="slider">
+					<ul>
+						<li> <img src="images/avion_intro.jpg" alt="" /> </li>
+						<li> <img src="images/avion_intro2.jpg" alt="" /> </li>
+						<li> <img src="images/avion_intro3.jpg" alt="" /> </li>
+						<li> <img src="images/avion_intro.jpg" alt="" /> </li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<!--Fin de l'en-tête-->
+
+
+		<!--Corps de la page-->
+		<div id="corps">
+			<section>
+				<!--Plan détaillé de la partie concernée-->
+				<ul id="plan">
+					<li> <a href="#tag_introduction">-Introduction</a> 
+						<ul>
+							<li> <a href="#tag_aviation_civile">Définition de l'avaiation civile</a> </li>
+							<li> <a href="#tag_geolocalisation">Définition de la géolocalisation</a> </li>
+							<li> <a href="#tag_problematique">Problématique</a> </li>
+							<li> <a href="#tag_plan">Plan</a> </li>
+						</ul>
+					</li>
+					<li> <a href="#frise">-Frise chronologique sur l'aviation civile</a> </li>
+				</ul>
+			
+				<article>
+					<!--Début de l'intro-->
+					<p id="tag_introduction">
+						En 2013 la célèbre firme <em>Airbus</em> a fait voler côte à côte 3  de ses modèles au dessus du Viaduc de Millau : les gros-porteurs qui sont l'A380, l'A350 et l'A330.  
+					</p>
+
+					<p id="tag_aviation_civile">
+						Ces vols avaient pour but de promouvoir la vente de ces modèles, fleurons de l'aviation civile Européenne.
+							<br />
+						<strong>L'aviation civile</strong> désigne simplement le transport de passagers civils et de marchandises. Vous pouvez vous reporter à la frise chronologique (en bas de page)  établissant un bref historique des dates importantes concernant l'aviation civile de ses débuts jusqu'à nos jours.
+
+					</p>
+
+						<!--Image-->
+						<p>
+							<img src="images/3gros_porteurs.jpg" alt="Les trois gros porteurs côte à côte" />
+						</p>
+
+					<p id="tag_geolocalisation">
+						Le vol des ces 3 avions côte à côte requiert une précision drastique. Elle peut être assurée à l'aide de l'expérience des pilotes d’essais mais également grâce à la technologie de la <strong>géolocalisation</strong> par satellite.
+							<br />
+						La géolocalisation est un procédé permettant de positionner géographiquement un objet ou une personne (sur un plan, par exemple) en déterminant ses <em>coordonnées</em> (latitude et longitude). Il existe différents types de géolocalisation: par Wifi, par GSM, par adresse IP. Pour notre part, dans ce TPE nous aborderons seulement la géolocalisation par satellite. Celle-ci permet donc de donner les coordonnées géographiques en temps réel, voire en différé (il est possible de les stocker afin de garder en mémoire un trajet) grâce à une constellation de satellites autour de la terre et d'un terminal équipé d'une puce compatible.
+					</p>
+
+					<p id="tag_problematique">
+						Nous nous sommes demandé si de telles prouesses de pilotage étaient possibles avant l'apparition du système de GPS et avons abouti à la problématique suivante :
+							<br />
+						<span style="font-weight: bold">Dans quelle mesure la <span class="ombre">géolocalisation par satellite</span> a-t-elle <em>révolutionné</em> le transport de passagers dans <span class="ombre">l'aviation civile</span> ?</span>
+					</p>
+
+					<p id="tag_plan">
+						Dans une première partie nous détaillerons les technologies de repérage spatial qui ont précédé la géolocalisation par satellite. Ensuite nous étudierons le fonctionnement de cette technologie de manière théorique mais également à l'aide d'expériences. Enfin, dans une troisième partie nous en déduirons les améliorations que ce système a apportées à l'aviation civile. Ce qui nous permettra d'évaluer l'ampleur de cette révolution.
+					</p>
+
+				</article>
+			</section>
+		</div>
+
+
+		<!--Frise chronologique sur l'aviation civile-->
+		<div id="frise">
+				<div id="timeline">
+				<ul id="dates">
+					<li><a href="#1">1911</a></li>
+					<li><a href="#2">1912</a></li>
+					<li><a href="#3">1914</a></li>
+					<li><a href="#4">1919</a></li>
+					<li><a href="#5">1929</a></li>
+					<li><a href="#6">1933</a></li>
+					<li><a href="#7">1935</a></li>
+					<li><a href="#8">1944</a></li>
+					<li><a href="#9">1970</a></li>
+				</ul>
+				<ul id="issues">
+					<li id="1">
+						<img src="images/frise/timbre_aviateur.jpg" width="256" height="256" />
+						<h1>Février 1911</h1>
+						<p>Premier vol aéropostal, un pilote français (du nom d'Henri Péquet) transporte du courrier jusqu'en Inde.</p>
+					</li>
+					<li id="2">
+						<img src="images/frise/avion_1912.jpg" width="256" height="256" />
+						<h1>Avril 1912</h1>
+						<p>Premier vol entre Paris et londres avec un passager.</p>
+					</li>
+					<li id="3">
+						<img src="images/frise/avion_tampa.jpg" width="256" height="256" />
+						<h1>Janvier 1914</h1>
+						<p>Mise en place du premier service régulier de passager du monde, avec la ligne aérienne reliant St Saint-Pétersbourg à Tampa (en Floride).</p>
+					</li>
+					<li id="4">
+						<img src="images/frise/avion_1919.jpg" width="256" height="256" />
+						<h1>1919</h1>
+						<p>En février, un aviateur français inaugure la ligne aérienne commercial entre paris et Londres.
+							<br />
+						En mars, il y a l'apparition de la première ligne de transport aérienne entre paris et Bruxelles.
+						</p>
+					</li>
+					<li id="5">
+						<img src="images/frise//altimetre.jpg" width="256" height="256" />
+						<h1>1929</h1>
+						<p>On assiste au premier vol à l'aide d'instruments de mesures (altimètres barométriques, gyrocompas, radiogoniométrie).</p>
+					</li>
+					<li id="6">
+						<img src="images/frise/air_france.jpg" width="256" height="256" />
+						<h1>1933</h1>
+						<p>Création de la compagnie aérienne Air France.</p>
+					</li>
+					<li id="7">
+						<img src="images/frise/dc3.jpg" width="256" height="256" />
+						<h1>1935</h1>
+						<p>Premier vol de l'avion "DC 3" surnommé le Dakota, c'est le plus célèbre avion de transport.</p>
+					</li>
+					<li id="8">
+						<img src="images/frise/oaci.jpg" width="256" height="256" />
+						<h1>1944</h1>
+						<p>Année de la création de l'organisation de l'aviation civile internationale.</p>
+					</li>
+					<li id="9">
+						<img src="images/frise/airbus.jpg" width="256" height="256" />
+						<h1>1970</h1>
+						<p>Fondation du célèbre constructeur aéronautique Européen: Airbus.</p>
+					</li>
+				</ul>
+				<div id="grad_left"></div>
+				<div id="grad_right"></div>
+				<a href="#" id="next">+</a>
+				<a href="#" id="prev">-</a>
+			</div>
+			
+			<h2>CSSLab.cl - jQuery Timelinr 0.9.53 - Crée par Sebastián Cortés - Adapté par nos soins</h2>
+			<h3> &copy;2013 CSSLab.cl - <a href="http://www.csslab.cl" title="Retourner sur le site auteur du script">[Site auteur du script]</a></h3>
+		</div>
+		<!--Fin de la frise-->
+
+
+		<!--Pied avec ages annexes-->
+		<footer>
+			<div id="bordure"></div>
+			<ul>
+				<li> <a href="supplement.html#sources">Sources</a> </li>
+				<li> <a href="supplement.html#remerciements">Remerciements</a> </li>
+				<li> <a href="#bordure">Codé par ...</a> </li>
+				<li> <a href="#bordure">Design inspiré de...</a> </li>
+			</ul>
+		</footer>
+
+		
+	</body>
+	
+</html>
+

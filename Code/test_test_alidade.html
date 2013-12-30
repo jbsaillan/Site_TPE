@@ -1,0 +1,100 @@
+<!--Test altimètre-->
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/page_style.css" />
+		<title>Alidade</title>
+
+		<style type="text/css">
+		/*Général*/
+			figure {
+				background-color: rgb(34, 35, 37);
+				border-top: 1px solid rgb(255, 204, 0);
+				border-bottom: 1px solid rgb(255, 204, 0);
+
+				width: 100%;
+				min-width: 780px;
+				padding: 0;
+				margin: 0;
+			}		
+
+			figure * {
+				margin: 0;
+				padding: 0;
+			}	
+
+			#schema_alidade {
+				margin: auto;
+
+				width: 840px;
+				min-height: 16px;
+
+				position: relative;
+
+				border: 1px solid yellow;
+			}
+
+			#cote_x {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				width: 5px;
+				min-height: 16px;
+
+				background-color: red;
+			}
+
+			#cote_y {
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+
+				width: 16px;
+				min-height: 5px;
+
+				background-color: purple;
+			}
+
+			#cote_z {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				width: 5px;
+				min-height: 20px;
+
+				transform-origin: top;
+				transform: rotate(-60deg);
+
+				background-color: green;
+			}
+
+		</style>
+
+
+		<script type="text/javascript">
+
+
+		</script>
+
+
+	</head>
+	<body>
+		<figure>
+			<div id="test_alidade">
+
+				<div id="schema_alidade">
+					<div id="cote_x"></div>
+					<div id="cote_y"></div>
+					<div id="cote_z"></div>
+					<div id="angle_alpha"></div>
+				</div>
+
+				
+
+			</div>
+		</figure>
+	</body>
+</html>

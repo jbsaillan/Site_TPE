@@ -1,0 +1,254 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/page_style.css" />
+		<title>Horizon artificiel</title>
+
+		<style type="text/css">
+
+		/*Schéma de l'horizona rtificiel*/
+			#figure_horizon {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+
+				background-color: rgb(34, 35, 37);
+				font-family: junction_regular;
+
+				border-top: 1px solid rgb(255, 204, 0);
+				border-bottom: 1px solid rgb(255, 204, 0);
+			}
+
+			#figure_horizon * {
+				margin: 0;
+				padding: 0;
+			}
+
+			#conteneur_horizon {
+				width: 740px;
+				margin: auto;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+
+			#illustration_horizon{
+				position: relative;
+				height: 440px;
+
+			}
+
+			#horizon_artificiel {
+				position: absolute;
+				left: 480px;
+
+				margin: auto;
+				margin-top: 20px;
+
+				width: 260px;
+				height: 260px;
+
+				box-shadow: 1px 1px 12px black;
+
+				background: url(images/partie1/fond.png) repeat-x;
+				background-position: top;
+			}
+
+			#partie_fixe {
+				position: relative;
+				z-index: 2;
+
+				width: 260px;
+				height: 260px;
+
+				background: url(images/partie1/cadre_horizon2.png) no-repeat, url(images/partie1/fixe.png) no-repeat;
+				background-position: top center;
+			}
+
+			#partie_mobile {
+				position: absolute;
+				z-index: 1;
+
+				background-image: url(images/partie1/mobile.png);
+
+				top: 30px;
+				left: 27px;
+
+				width: 203px;
+				height: 203px;
+
+				text-align: center;
+			}
+
+			/*Schéma de l'avion*/
+			#illustration_avion {
+				position: absolute;
+				left: 0px;
+
+				background-image: url(images/partie1/fond.png);
+				margin: auto;
+				margin-top: 20px;
+
+				width: 473px;
+				height: 260px;
+
+				box-shadow: 2px 2px 12px black;
+			}	
+
+			#avion {
+				position: absolute;
+				top: 50px;
+				left: 12px;
+
+				z-index: 2;
+				
+				background-image: url(images/partie1/schema_avion.png);
+
+				width: 453px;
+				min-height: 118px;
+
+			}
+
+			#gyroscope {
+				position: absolute;
+				z-index: 1;
+
+				top: 105px;
+				left: 228px;
+
+				width: 19px;
+				min-height: 53px;
+
+				background-image: url(images/partie1/gyroscope.png);
+				background-repeat: repeat-y;
+			}
+
+			/*Volant*/
+			#direction {
+				position: absolute;
+				bottom: 110px;
+				left: 245px;
+
+				z-index: 25;
+
+				width: 330px;
+				min-height: 161px;
+
+				background-image: url(images/partie1/volant.png);
+			}
+
+			#tourne_gauche {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				width: 165px;
+				min-height: 161px;
+			}
+
+			#tourne_droite {
+				position: absolute;
+				top: 0px;
+				left: 165px;
+
+				width: 165px;
+				min-height: 161px;
+			}
+
+			/*Animation*/
+			#partie_mobile, #avion, #direction {
+            	-moz-transition: transform 2s linear;
+            	-webkit-transition: transform 2s linear;
+           		-o-transition: transform 2s linear;
+           		-ms-transition: transform 2s linear;
+           		transition: transform 2s linear;
+			} 
+
+			/*Legende*/
+			figcaption {
+				position: absolute;
+				bottom: 0px;
+				background-color: white;
+
+				border: 2px solid rgb(125, 169, 206);
+			}
+
+			figcaption p {
+				border-bottom: 1px solid rgb(222, 222, 222);
+			}
+
+			figcaption p:hover, figcaption h1:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
+			figcaption h1 {
+				font-size: 1em;
+				text-align: center;
+				text-decoration: none;
+				font-weight: normal;
+			}
+
+			figcaption img {
+				height: 30px;
+			}
+
+			</style>
+
+			<!--Script permettant la rotation-->
+			<script type="text/javascript">
+					function tourne(degre) {
+						document.getElementById('direction').style.MozTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('avion').style.MozTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('partie_mobile').style.MozTransform = 'rotate(' + -degre + 'deg)';
+
+						document.getElementById('direction').style.webkitTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('avion').style.webkitTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('partie_mobile').style.webkitTransform = 'rotate(' + -degre + 'deg)';
+
+						document.getElementById('direction').style.msTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('avion').style.msTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('partie_mobile').style.msTransform = 'rotate(' + -degre + 'deg)';
+
+						document.getElementById('direction').style.OTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('avion').style.OTransform = 'rotate(' + degre + 'deg)';
+						document.getElementById('partie_mobile').style.OTransform = 'rotate(' + -degre + 'deg)';
+
+						document.getElementById('direction').style.transform = 'rotate(' + degre + 'deg)';
+						document.getElementById('avion').style.transform = 'rotate(' + degre + 'deg)';
+						document.getElementById('partie_mobile').style.transform = 'rotate(' + -degre + 'deg)';
+				}
+			</script>
+
+	</head>
+
+	<body>
+		<figure id="figure_horizon">
+			<div id="conteneur_horizon">
+				<div id="illustration_horizon">
+
+					<div id="horizon_artificiel">
+						<div id="partie_fixe"></div>
+						<div id="partie_mobile"></div>
+					</div>
+
+					<div id="illustration_avion">
+						<div id="avion"></div>
+						<div id="gyroscope"></div>
+					</div>
+
+					<div id="direction">
+						<div id="tourne_droite" onmouseover="tourne(30)" onmouseout="tourne(0)"></div>
+						<div id="tourne_gauche" onmouseover="tourne(-30)" onmouseout="tourne(0)"></div>
+					</div>
+
+					<figcaption>
+						<p>A gauche un schéma de l'avion, où <img src="images/partie1/gyroscope.png" alt="Représentation d'un gyroscope"> représente le gyrsocope qui garde la verticale. A droite, le cadran de l'horizon artificiel.</p>
+						<h1>Survolez le levier de commande afin de faire incliner l'avion à droite ou à gauche et observer les changements qui s'opèrent.</h1>
+					</figcaption>
+
+				</div>
+			</div>
+		</figure>
+
+	</body>
+
+</html>

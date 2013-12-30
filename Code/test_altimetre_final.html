@@ -1,0 +1,340 @@
+<!--Test altimètre-->
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/page_style.css" />
+		<title>Altimètre</title>
+
+		<style type="text/css">
+
+		/*général*/
+			figure {
+				background-color: rgb(34, 35, 37);
+				border-top: 1px solid rgb(255, 204, 0);
+				border-bottom: 1px solid rgb(255, 204, 0);
+
+				width: 100%;
+				min-width: 780px;
+				padding: 0;
+				margin: 0;
+			}		
+
+			figure * {
+				margin: 0;
+				padding: 0;
+			}	
+
+			#test_altimetre {
+				position: relative;
+				width: 780px;
+				min-height: 400px;
+
+				margin: auto;
+				margin-top: 40px;
+			}
+
+			#colonne_gauche {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+
+				width: 270px;
+				min-height: 300px;
+			}
+
+			#colonne_droite {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+
+				width: 500px;
+				min-height: 300px;
+			}
+
+
+			/*Colonne de droite*/
+			#pression_mer {
+				width: 100%;
+			}
+
+			#pression_mer ul, #valeurs ul {
+				list-style-type: none;
+
+				border: 2px solid rgb(125, 169, 206);
+			}
+
+			#pression_mer ul li, #valeurs ul li{
+				min-height: 25px;
+				padding-left: 5px;
+			}
+
+			#anticyclone {
+				border-top: 1px solid rgb(222, 222, 222);
+			}
+
+			#depression {
+				border-bottom: 1px solid rgb(222, 222, 222);
+			}
+
+			.pression_mer_selectionne {
+				background-color: rgb(125, 169, 206);
+				color: white;
+			}
+
+			.pression_mer_survol {
+				background-color: white;
+				color: black;
+			}
+
+			.pression_mer_survol:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
+			#legende_meteo {
+				color: rgb(240, 240, 240);
+
+				text-align: center;
+				text-decoration: underline;
+			}
+
+
+			#formule_donnee {
+				margin-top: 15px;
+				padding: 5px;
+
+				background-color: white;
+				border: 2px solid rgb(125, 169, 206);
+				border-bottom: none;
+			}
+
+			#formule_donnee:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
+			#valeurs ul li {
+				background-color: white;
+				border-bottom: 1px solid rgb(222, 222, 222);
+			}
+
+			#valeurs ul li:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
+			#formule_resultat {
+				background-color: white;
+				border: 2px solid rgb(125, 169, 206);
+				border-top: none;
+			}
+
+			#formule_resultat p {
+				border-bottom: 1px solid rgb(222, 222, 222);
+			}
+
+			#formule_resultat p:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
+			#resultat {
+				font-weight: bold;
+			}
+
+
+
+			/*colonne de gauche*/
+			#colonne_gauche form p:first-child{
+				width: 100%;
+				min-height: 62px;
+
+				border: 2px solid rgb(125, 169, 206);
+				background-color: white;
+
+				padding-top: 15px;
+			}
+
+			#colonne_gauche form p {
+				text-align: center;
+			}
+
+			#colonne_gauche form input[type='range'] {
+				width: 200px;
+			}
+
+			#colonne_gauche form label {
+				color: white;
+				text-decoration: underline;
+			}
+
+			#plus_moins {
+				font-size: 1.3em;
+				position: relative;
+				top: -4px;
+			}
+
+
+			#schema_altimetre {
+				position: relative;
+
+				background-image: url(images/partie1/fond2.png);
+				background-color: rgb(125, 169, 206);
+				background-position: bottom;
+				background-repeat: repeat-x;
+
+				margin-top: 15px;
+
+				border: 2px solid black;
+
+				width: 100%;
+				min-height: 200px;
+			}
+
+			#schema_altimetre img {
+				position: absolute;
+				left: 44px;
+				bottom: 45px;
+
+				padding: 0;
+				margin: 0;
+
+				-moz-transition: bottom 2s linear;
+				-webkit-transition: bottom 2s linear;
+				-ms-transition: bottom 2s linear;
+				-o-transition: bottom 2s linear;
+				transition: bottom 2s linear;
+			}
+
+			#schema_altimetre span {
+				background-color: white;
+				padding: 0px 5px 0px 5px;
+			}
+
+		</style>
+
+		<script type="text/javascript">
+			var pression_mer = 1013;
+			
+			function meteo (id, P) {
+				var pression;
+				var modif_id1;
+				var modif_id2;
+				if (id == 'depression') {
+					pression = 1000;
+					modif_id1 = 'normal';
+					modif_id2 = 'anticyclone';
+				}
+				else if (id == 'anticyclone') {
+					pression = 1080;
+					modif_id1 = 'normal';
+					modif_id2 = 'depression';
+				}
+				else {
+					pression = 1013;
+					modif_id1 = 'depression';
+					modif_id2 = 'anticyclone';
+				}
+
+				document.getElementById("set_pression_mer").innerHTML = pression;
+
+				document.getElementById(id).className='pression_mer_selectionne';
+				document.getElementById(modif_id1).className='pression_mer_survol';
+				document.getElementById(modif_id2).className='pression_mer_survol';
+
+				calcul(P, pression);
+
+				return pression;
+			}
+
+			function calcul(P, Po) {
+				var logarithme = Math.log(Po / P);
+				var resultat = Math.floor(((287*(15+273))/9.81) * logarithme);
+				var coordonnees_avion = resultat / 129;
+
+					if (coordonnees_avion >= 128) {
+						coordonnees_avion = 128;
+					}
+
+
+				document.getElementById("set_pression_avion").innerHTML = P;
+				document.getElementById("affichage_pression_avion").value = P;
+
+				document.getElementById("formule_actualisee").innerHTML = 'z = (287(T + 273)/g)*ln(' + Po + '/' + P + ')';
+				document.getElementById("resultat").innerHTML = 'z = ' + resultat;
+
+				document.getElementById("schema_altimetre_avion").style.bottom = coordonnees_avion + "px";
+				document.getElementById("resultat_schema_avion").innerHTML = resultat + "mètres";
+				
+				
+			}
+
+		</script>
+
+
+	</head>
+	<body>
+		<figure>
+			<div id="test_altimetre">
+				<div id="colonne_gauche">
+					<form method="get" name="altimetre" action="test_altimetre.html">
+						<p>
+							<input type="number" size="3" id="affichage_pression_avion" value="500" min="50" max="1000" />hPa
+								<br />
+							<span id="plus_moins">-</span> <input type="range" id="pression_avion" name="pression_avion" value="500" min="50" max="1000" step="1" onchange="calcul(pression_avion.value, pression_mer)" /> <span id="plus_moins">+</span>
+						</p>
+						<p>
+							<label for="pression_avion">Modifier la pression mesurée par l'altimètre au niveau de l'avion</label>
+						</p>
+					</form>
+					<div id="schema_altimetre">
+						<p>
+							<img id="schema_altimetre_avion" src="images/partie1/schema_avion_altimetre.png" alt="Petit avion" />
+							<span id="resultat_schema_avion">5949 mètres</span>	
+						</p>
+					</div>
+				</div>
+			
+				<div id="colonne_droite">
+					<div id="pression_mer">
+						<ul>
+							<li id="depression" class="pression_mer_survol" onclick="pression_mer=meteo(this.id, document.getElementById('pression_avion').value)"> 
+								Dépression (1000hPa)
+							</li>
+							<li id="normal" class="pression_mer_selectionne" onclick="pression_mer=meteo(this.id, document.getElementById('pression_avion').value)"> 	Météo normale (1013hPa)
+							</li>
+							<li id="anticyclone" class="pression_mer_survol" onclick="pression_mer=meteo(this.id, document.getElementById('pression_avion').value)"> 
+								Anti-cyclone (1080hPa)
+							</li>
+						</ul>
+						<p id="legende_meteo">
+							Etalonnage de l'altimètre : choisissez (en cliquant) la météo et la pression atmosphérique au niveau de la mer.
+						</p>
+					</div>
+					<div id="formule_donnee">
+						<p>
+							Formule donnée:
+								<br />
+							z = (287(T + 273)/g)*ln(Po/P)
+						</p>
+					</div>
+					<div id="valeurs">
+						<ul> 
+							<li> P la pression au niveau de l'avion: <span id="set_pression_avion">500</span>hPa. </li>
+							<li> Po la pression au niveau de la mer: <span id="set_pression_mer">1013</span>hPa. </li>
+							<li> g la constante gravitationelle ~9.81</li>
+							<li> T température au niveau de la mer en °c (ici 15°C)</li>
+						</ul>
+					</div>
+					<div id="formule_resultat">
+						<p>
+							<span id="formule_actualisee">z = (287(15 + 273)/g)*ln(1013/500)</span>
+						</p>
+						<p>
+							<span id="resultat">z = 5949</span> mètres d'altitude.
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</figure>
+
+	</body>
+</html>
