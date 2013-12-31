@@ -31,19 +31,33 @@
 
 				margin: auto;
 				margin-top: 40px;
-
-				border: 1px solid red;
+				margin-bottom: 40px;
 			}
 
 
 			/*Scchéma du triangle*/
 			#schema_alidade {
 				margin: auto;
+				margin-top: 0px;
 
-				width: 774px;
+				width: 400px;
 				min-height: 424px;
 
 				position: relative;
+
+				-webkit-transition: min-height 1s linear, width 1s linear;
+				-o-transition: min-height 1s linear, width 1s linear;
+				-moz-transition: min-height 1s linear, width 1s linear;
+				-ms-transition: min-height 1s linear, width 1s linear;
+				transition: min-height 1s linear, width 1s linear;
+			}
+
+			#schema_alidade div {
+				-webkit-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				-o-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				-moz-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				-ms-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
 			}
 
 			#cote_x {
@@ -76,10 +90,45 @@
 				width: 2px;
 				min-height: 600px;
 
+				-webkit-transform-origin: top;
+				-webkit-transform: rotate(-45deg);
+				-o-transform-origin: top;
+				-o-transform: rotate(-45deg);
+				-moz-transform-origin: top;
+				-moz-transform: rotate(-45deg);
+				-ms-transform-origin: top;
+				-ms-transform: rotate(-45deg);
 				transform-origin: top;
 				transform: rotate(-45deg);
 
 				background-color: green;
+			}
+
+			#angle_alpha {
+				background-image: url(images/partie1/schema_alpha.png);
+				width: 32px;
+				min-height: 32px;
+
+				position: absolute;
+				top: 90%;
+				left: 80%;
+			}
+
+			#schema_avion_alidade {
+				background-image: url(images/partie1/schema_avion_altimetre.png);
+
+				width: 112px;
+				min-height: 72px;
+
+				position: absolute;
+				top: -30px;
+				left: -57px;
+
+				-webkit-transform: scale(0.5);
+				-o-transform: scale(0.5);
+				-ms-transform: scale(0.5);
+				-moz-transform: scale(0.5);
+				transform: scale(0.5);
 			}
 
 
@@ -154,6 +203,37 @@
 				text-decoration: underline;
 				color: white;
 			}
+
+
+			/*Affichage de la formule*/
+			#resultat_alidade {
+				width: 50%;
+
+				margin: auto;
+				margin-top: 10px;
+			}
+
+			#resultat_alidade ul {
+				list-style-type: none;
+
+				border: 2px solid rgb(125, 169, 206);
+			}
+
+			#resultat_alidade ul li {
+				min-height: 25px;
+				padding-left: 5px;
+				border-bottom: 1px solid rgb(222, 222, 222);
+				background-color: white;
+			}
+
+			#resultat_alidade ul li:nth-child(5) {
+				border-bottom: none;
+			}
+
+			#resultat_alidade ul li:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
 		</style>
 
 
@@ -185,7 +265,7 @@
 				document.getElementById("formule_alidade").innerHTML = rapport + '(&alpha;) = ' + cote_a_calculer + '/z';	
 				document.getElementById("formule_alidade_actualisee").innerHTML = cote_a_calculer + ' = ' + rapport + ' (&alpha;) * z';
 				document.getElementById("formule_alidade_actualisee2").innerHTML = cote_a_calculer + ' = ' + rapport + ' (' + alpha + ') * ' + z; 	
-				document.getElementById("resultat_calcul_alidade").innerHTML = 'Le cote ' + cote_a_calculer + ' mesure: ' + resultat;
+				document.getElementById("resultat_calcul_alidade").innerHTML = 'Le cote ' + cote_a_calculer + ' mesure: ' + Math.round(resultat) + 'm';
 
 				transform_figure(z, alpha, x, y);
 			}
@@ -228,6 +308,19 @@
 
 				document.getElementById("cote_z").style.minHeight = z_px + 'px';
 				document.getElementById("cote_z").style.transform = 'rotate(' + -angle + 'deg)';
+
+				document.getElementById("schema_alidade").style.minHeight = x_px + 'px';
+				document.getElementById("schema_alidade").style.width = y_px + 'px';
+
+				if (z <= 125 && alpha <= 35) {
+					document.getElementById("angle_alpha").style.transform = 'scale(0.25)';
+				}
+				else if (z <= 165 || alpha <= 40) {
+					document.getElementById("angle_alpha").style.transform = 'scale(0.5)';
+				}
+				else {
+					document.getElementById("angle_alpha").style.transform = 'scale(1)';
+				}
 			}
 		</script>
 
@@ -238,10 +331,12 @@
 			<div id="test_alidade">
 
 				<div id="schema_alidade">
-					<div id="cote_x"></div>
-					<div id="cote_y"></div>
-					<div id="cote_z"></div>
-					<div id="angle_alpha"></div>
+					<div id="schema_avion_alidade"></div>
+					<div id="cote_x" class="cote_alidade"></div>
+					<div id="cote_y" class="cote_alidade"></div>
+					<div id="cote_z" class="cote_alidade"></div>
+					<div id="angle_alpha" class="cote_alidade"></div>
+					<div id="schema_emetteur"></div>
 				</div>
 
 				<div id="parametre_alidade">
@@ -294,8 +389,8 @@
 						<li id="cote_a_calculer">Pour calculer le côté opposé x:</li>
 						<li id="formule_alidade">sin &alpha; = x/z</li>
 						<li id="formule_alidade_actualisee">x = sin &alpha; * z</li>
-						<li id="formule_alidade_actualisee2"> </li>
-						<li id="resultat_calcul_alidade">Le cote x mesure: ...m</li>
+						<li id="formule_alidade_actualisee2">x = sinus (40) * 200</li>
+						<li id="resultat_calcul_alidade">Le cote x mesure: 129m</li>
 					</ul>
 				</div>
 
