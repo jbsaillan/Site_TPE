@@ -11,7 +11,7 @@
 	</head>
 
 	
-	<body id="haut" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
+	<body id="haut" oncontextmenu="return false" ondragstart="return false">
 	
 		<!--Boutons "home" et "up"-->
 		<div id="fixe">
@@ -122,9 +122,9 @@
 					<div id="colonne_gauche">
 						<form method="get" name="altimetre" action="test_altimetre.html">
 							<p>
-								<input type="number" size="3" id="affichage_pression_avion" value="500" min="50" max="1000" />hPa
+								<input type="text" size="3" id="affichage_pression_avion" value="500"/>hPa
 									<br />
-								<span id="plus_moins">-</span> <input type="range" id="pression_avion" name="pression_avion" value="500" min="50" max="1000" step="1" onchange="calcul(pression_avion.value, pression_mer)"> <span id="plus_moins">+</span>
+								<span class="plus_moins">-</span> <input type="range" id="pression_avion" name="pression_avion" value="500" min="50" max="1000" step="1" onchange="calcul(pression_avion.value, pression_mer)"> <span class="plus_moins">+</span>
 							</p>
 							<p>
 								<label for="pression_avion">Modifier la pression mesurée par l'altimètre au niveau de l'avion</label>
@@ -226,10 +226,10 @@
 							<div id="tourne_gauche" onmouseover="tourne(-30)" onmouseout="tourne(0)"></div>
 						</div>
 
-						<figcaption>
+						<div id="figcaption_horizon">
 							<p>A gauche un schéma de l'avion, où <img src="images/partie1/gyroscope.png" alt="Représentation d'un gyroscope"> représente le gyrsocope qui garde la verticale. A droite, le cadran de l'horizon artificiel.</p>
 							<h1>Survolez le levier de commande afin de faire incliner l'avion à droite ou à gauche et observer les changements qui s'opèrent.</h1>
-						</figcaption>
+						</div>
 
 					</div>
 				</div>
@@ -342,7 +342,7 @@
 
 							<div id="parametre_alpha">
 								<p>
-									<input type="text" id="nombre_alpha" name="angle_alpha" value="40°" min="30" max="45" size="1" />
+									<input type="text" id="nombre_alpha" name="angle_alpha" value="40°" size="1" />
 										<br />
 									30° <input type="range" id="mesure_alpha" name="mesure_alpha" value="40" min="30" max="45" step="1" onchange="change_alpha(document.getElementById('mesure_z').value, document.getElementById('mesure_alpha').value, document.getElementById('rapport_alidade').value)" /> 45°
 								</p>
@@ -353,7 +353,7 @@
 
 							<div id="parametre_longueur_z">
 								<p>
-									<input type="text" id="longueur_z" name="longueur_z" value="200m" min="100" max="300" size="3" />
+									<input type="text" id="longueur_z" name="longueur_z" value="200m" size="3" />
 										<br />
 									100m <input type="range" id="mesure_z" name="mesure_z" value="200" min="100" max="300" step="1" onchange="change_longueur_z(document.getElementById('mesure_z').value, document.getElementById('mesure_alpha').value, document.getElementById('rapport_alidade').value)" /> 300m
 								</p>
@@ -374,9 +374,9 @@
 							<li id="resultat_calcul_alidade">Le cote x mesure: 129m</li>
 						</ul>
 					</div>
-					<figcaption>
+					<div id="figcaption_alidade">
 						<p>Animation reprenant l'expérience précédente</p>
-					</figcaption>
+					</div>
 				</div>
 			</figure>
 		</div>

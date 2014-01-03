@@ -85,11 +85,11 @@ strong:hover, .ombre:hover {
 	background-image: url(../images/icone.png);
 }
 
-#fixe a[id="1"] {
+#fixe a[id="lien_1"] {
 	background-position: 0px 50px;
 }
 
-#fixe a[id="2"] {
+#fixe a[id="lien_2"] {
 	background-position: 0px 0px;
 }
 
@@ -231,13 +231,6 @@ nav a:hover {
 	width:697px; 
 }
 
-@keyframes slider_intro { 
-	from,27%,to {margin-left: 0px}
-	33%, 60% {margin-left: -697px;}
-	66%, 93% {margin-left: -1394px;}
-	99.99%{margin-left: -2091px}
-}
-
 @-webkit-keyframes slider_intro { 
 	from,27%,to {margin-left: 0px}
 	33%, 60% {margin-left: -697px;}
@@ -265,6 +258,14 @@ nav a:hover {
 	66%, 93% {margin-left: -1394px;}
 	99.99%{margin-left: -2091px}
 }
+
+@keyframes slider_intro { 
+	from,27%,to {margin-left: 0px}
+	33%, 60% {margin-left: -697px;}
+	66%, 93% {margin-left: -1394px;}
+	99.99%{margin-left: -2091px}
+}
+
 /*Contenu de la page*/
 #corps {
 	background-color: white;
