@@ -295,9 +295,90 @@
 						<li>tan(&alpha;) = &chi; / 180</li>
 						<li> &chi; = 180 x tan(&alpha;) </li>
 					</ul>
+					<p>
+						<img src="images/partie1/schema_alidade2.png" alt="Schéma montrant le montage de l'expérence" />
+					</p>
 
 				</article>
 			</section>
+
+			<figure>
+			<div id="test_alidade">
+
+				<div id="schema_alidade">
+					<div id="schema_avion_alidade"></div>
+					<div id="cote_x" class="cote_alidade"></div>
+					<div id="cote_y" class="cote_alidade"></div>
+					<div id="cote_z" class="cote_alidade"></div>
+					<div id="angle_alpha" class="cote_alidade"></div>
+					<div id="schema_emetteur"></div>
+				</div>
+
+				<div id="parametre_alidade">
+
+					<form method="get" name="form_alidade" action="test_alidade.html">
+
+						<div id="parametre_cote">
+							<ul id="legende_alidade">
+								<li>La longueur rouge représente <span style="color: red;">le côté &chi;</span>.</li>
+								<li>La longueur violette représente <span style="color: purple;">le côté y ou le sol</span>.</li>
+								<li>La longueur verte représente <span style="color: green;">le côté z</span> dont on connait la longueur</li>
+								<li>Les côtés <span style="color: purple;">y</span> et <span style="color: green;">z</span> forment l'angle <span style="color: rgb(0, 174, 240);">&alpha;</span>. </li>
+								<li>L'angle formé par les côtés <span style="color: purple;">y</span> et <span style="color: red;">z</span> est rectangle.</li>
+							</ul>
+							<ul>
+								<li id="choix_cote_x" class="choix_cote_selectionne" onclick="change_cote(document.getElementById('mesure_z').value, document.getElementById('mesure_alpha').value, 'sinus')"> 
+									L'opposé: x
+								</li>
+								<li id="choix_cote_y" class="choix_cote_normal" onclick="change_cote(document.getElementById('mesure_z').value, document.getElementById('mesure_alpha').value, 'cosinus')"> 	
+									L'adjacent: y
+								</li>
+							</ul>
+							<p id="legende_choix_cote">
+								Choisissez (en cliquant) la longueur du côté à calculer
+								<input type="hidden" id="rapport_alidade" value="sinus" />
+							</p>
+						</div>
+
+							<div id="parametre_alpha">
+								<p>
+									<input type="text" id="nombre_alpha" name="angle_alpha" value="40°" min="30" max="45" size="1" />
+										<br />
+									30° <input type="range" id="mesure_alpha" name="mesure_alpha" value="40" min="30" max="45" step="1" onchange="change_alpha(document.getElementById('mesure_z').value, document.getElementById('mesure_alpha').value, document.getElementById('rapport_alidade').value)" /> 45°
+								</p>
+								<p>
+									<label for="mesure_alpha">Mesure de l'angle &alpha; en °</label>
+								</p>
+							</div>
+
+							<div id="parametre_longueur_z">
+								<p>
+									<input type="text" id="longueur_z" name="longueur_z" value="200m" min="100" max="300" size="3" />
+										<br />
+									100m <input type="range" id="mesure_z" name="mesure_z" value="200" min="100" max="300" step="1" onchange="change_longueur_z(document.getElementById('mesure_z').value, document.getElementById('mesure_alpha').value, document.getElementById('rapport_alidade').value)" /> 300m
+								</p>
+								<p>
+									<label for="mesure_z">Mesure de la longueur z en mètres</label>
+								</p>
+							</div>
+
+						</form>
+					</div>
+
+					<div id="resultat_alidade">
+						<ul>
+							<li id="cote_a_calculer">Pour calculer le côté opposé x:</li>
+							<li id="formule_alidade">sin &alpha; = x/z</li>
+							<li id="formule_alidade_actualisee">x = sin &alpha; * z</li>
+							<li id="formule_alidade_actualisee2">x = sinus (40) * 200</li>
+							<li id="resultat_calcul_alidade">Le cote x mesure: 129m</li>
+						</ul>
+					</div>
+					<figcaption>
+						<p>Animation reprenant l'expérience précédente</p>
+					</figcaption>
+				</div>
+			</figure>
 		</div>
 
 		<!--Pied avec ages annexes-->
@@ -392,6 +473,106 @@
 				document.getElementById('avion').style.transform = 'rotate(' + degre + 'deg)';
 				document.getElementById('partie_mobile').style.transform = 'rotate(' + -degre + 'deg)';
 				}
+		</script>
+
+		<!-- Script pour le schéma interactif de l'alidade -->
+		<script type="text/javascript">
+
+			function calcul_alidade(z, alpha, rapport) {
+				var y, x, cote_a_calculer, resultat;
+				var alpha_radian = (alpha/180)*Math.PI;
+
+				y = z * Math.cos(alpha_radian);
+
+				x = z * Math.sin(alpha_radian);
+
+				if (rapport == 'sinus') {
+					cote_a_calculer = 'x';
+				}
+				else if (rapport == 'cosinus') {
+					cote_a_calculer = 'y';
+				}
+
+				if (cote_a_calculer == 'x') {
+					resultat = x;
+				}
+				else if (cote_a_calculer == 'y') {
+					resultat = y;
+				}
+
+				document.getElementById("cote_a_calculer").innerHTML = 'Pour calculer le côté ' + cote_a_calculer + ':';	
+				document.getElementById("formule_alidade").innerHTML = rapport + '(&alpha;) = ' + cote_a_calculer + '/z';	
+				document.getElementById("formule_alidade_actualisee").innerHTML = cote_a_calculer + ' = ' + rapport + ' (&alpha;) * z';
+				document.getElementById("formule_alidade_actualisee2").innerHTML = cote_a_calculer + ' = ' + rapport + ' (' + alpha + ') * ' + z; 	
+				document.getElementById("resultat_calcul_alidade").innerHTML = 'Le cote ' + cote_a_calculer + ' mesure: ' + Math.round(resultat) + 'm';
+
+				transform_figure(z, alpha, x, y);
+			}
+
+			function change_cote(z, alpha, rapport) {
+				calcul_alidade(z, alpha, rapport);
+				if (rapport == 'sinus') {
+					document.getElementById("rapport_alidade").value = 'sinus';
+					document.getElementById("choix_cote_x").className = 'choix_cote_selectionne';
+					document.getElementById("choix_cote_y").className = 'choix_cote_normal';
+				}
+				else if (rapport == 'cosinus') {
+					document.getElementById("rapport_alidade").value = 'cosinus';
+					document.getElementById("choix_cote_y").className = 'choix_cote_selectionne';
+					document.getElementById("choix_cote_x").className = 'choix_cote_normal';
+				}
+			}
+
+			function change_longueur_z(z, alpha, rapport) {
+				document.getElementById("longueur_z").value = z + 'm';
+				calcul_alidade(z, alpha, rapport);
+			}
+
+			function change_alpha(z, alpha, rapport) {
+				document.getElementById("nombre_alpha").value = alpha + '°';
+				calcul_alidade(z, alpha, rapport);
+			}
+
+			function transform_figure(z, alpha, x, y) {
+				var z_px, x_px, y_px, angle;
+				z_px = 2 * Math.round(z);
+				x_px = 2 * Math.round(x);
+				y_px = 2 * Math.round(y);
+				angle = 180 - 90 - alpha;
+
+				document.getElementById("cote_x").style.minHeight = x_px + 'px';
+				
+				document.getElementById("cote_y").style.width = y_px + 'px';
+				document.getElementById("cote_y").style.top = x_px + 'px';
+
+				document.getElementById("cote_z").style.minHeight = z_px + 'px';
+
+				document.getElementById("cote_z").style.mozTransform = 'rotate(' + -angle + 'deg)';
+				document.getElementById("cote_z").style.msTransform = 'rotate(' + -angle + 'deg)';
+				document.getElementById("cote_z").style.oTransform = 'rotate(' + -angle + 'deg)';
+				document.getElementById("cote_z").style.webkitTransform = 'rotate(' + -angle + 'deg)';
+				document.getElementById("cote_z").style.transform = 'rotate(' + -angle + 'deg)';
+
+				document.getElementById("schema_alidade").style.minHeight = x_px + 'px';
+				document.getElementById("schema_alidade").style.width = y_px + 'px';
+
+				var scale_alpha;
+				if (z <= 125 && alpha <= 35) {
+					scale_alpha = 0.25;
+					document.getElementById("angle_alpha").style.transform = 'scale(0.25)';
+				}
+				else if (z <= 165 || alpha <= 40) {
+					scale_alpha = 0.5;
+				}
+				else {
+					scale_alpha = 1;
+				}
+				document.getElementById("angle_alpha").style.mozTransform = 'scale(' + scale_alpha + ')';
+				document.getElementById("angle_alpha").style.msTransform = 'scale(' + scale_alpha + ')';
+				document.getElementById("angle_alpha").style.oTtransform = 'scale(' + scale_alpha + ')';
+				document.getElementById("angle_alpha").style.webkitTransform = 'scale(' + scale_alpha + ')';
+				document.getElementById("angle_alpha").style.transform = 'scale(' + scale_alpha + ')';
+			}
 		</script>
 
 

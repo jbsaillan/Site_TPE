@@ -369,9 +369,13 @@
 			} 
 
 				/*Legende*/
-			figcaption {
+			#figure_horizon figcaption {
 				position: absolute;
 				bottom: 0px;
+				
+			}
+
+			figcaption {
 				background-color: white;
 
 				border: 2px solid rgb(125, 169, 206);
@@ -398,3 +402,249 @@
 			figcaption img {
 				height: 30px;
 			}
+
+
+
+
+			/*CSS pour le script d el'alidade*/
+			#test_alidade {
+				position: relative;
+				width: 840px;
+				min-height: 400px;
+
+				margin: auto;
+				margin-top: 40px;
+				margin-bottom: 40px;
+			}
+
+			#test_alidade figcaption {
+				margin: auto;
+				margin-top: 10px;
+
+				font-size: 1.2em;
+				text-decoration: underline;
+
+				width: 418px;
+			}
+
+			#legende_alidade {
+				margin: auto;
+				margin-top: 10px;
+
+				width: 100%;
+
+				text-align: center;
+				font-size: 1em;
+
+				background-color: white;
+				border: 2px solid rgb(125, 169, 206);
+			}
+
+			/*Scchéma du triangle*/
+			#schema_alidade {
+				margin: auto;
+				margin-top: 0px;
+
+				width: 400px;
+				min-height: 424px;
+
+				position: relative;
+
+				-webkit-transition: min-height 1s linear, width 1s linear;
+				-o-transition: min-height 1s linear, width 1s linear;
+				-moz-transition: min-height 1s linear, width 1s linear;
+				-ms-transition: min-height 1s linear, width 1s linear;
+				transition: min-height 1s linear, width 1s linear;
+			}
+
+			#schema_alidade div {
+				-webkit-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				-o-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				-moz-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				-ms-transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+				transition: width 1s linear, min-height 1s linear, top 1s linear, transform 1s linear;
+			}
+
+			#cote_x {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				width: 2px;
+				min-height: 424px;
+
+				background-color: red;
+			}
+
+			#cote_y {
+				position: absolute;
+				top: 424px;
+				left: 0px;
+
+				width: 424px;
+				min-height: 2px;
+
+				background-color: purple;
+			}
+
+			#cote_z {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				width: 2px;
+				min-height: 600px;
+
+				-webkit-transform-origin: top;
+				-webkit-transform: rotate(-45deg);
+				-o-transform-origin: top;
+				-o-transform: rotate(-45deg);
+				-moz-transform-origin: top;
+				-moz-transform: rotate(-45deg);
+				-ms-transform-origin: top;
+				-ms-transform: rotate(-45deg);
+				transform-origin: top;
+				transform: rotate(-45deg);
+
+				background-color: green;
+			}
+
+			#angle_alpha {
+				background-image: url(../images/partie1/schema_alpha.png);
+				width: 32px;
+				min-height: 32px;
+
+				position: absolute;
+				top: 90%;
+				left: 80%;
+			}
+
+			#schema_avion_alidade {
+				background-image: url(../images/partie1/schema_avion_altimetre.png);
+
+				width: 112px;
+				min-height: 72px;
+
+				position: absolute;
+				top: -30px;
+				left: -57px;
+
+				-webkit-transform: scale(0.5);
+				-o-transform: scale(0.5);
+				-ms-transform: scale(0.5);
+				-moz-transform: scale(0.5);
+				transform: scale(0.5);
+			}
+
+
+			/*Choix du côté à calculer*/
+			#parametre_cote {
+				width: 50%;
+
+				margin: auto;
+				margin-top: 10px;
+			}
+
+			#parametre_cote ul {
+				list-style-type: none;
+				background-color: white;
+				border: 2px solid rgb(125, 169, 206);
+			}
+
+			#parametre_cote ul li {
+				min-height: 25px;
+				padding-left: 5px;
+			}
+
+			#choix_cote_x, #legende_alidade li {
+				border-bottom: 1px solid rgb(222, 222, 222);
+			}
+
+			.choix_cote_selectionne {
+				background-color: rgb(125, 169, 206);
+				color: white;
+			}
+
+			.choix_cote_normal {
+				background-color: white;
+				color: black;
+			}
+
+			.choix_cote_normal:hover, #legende_alidade li:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
+			#legende_choix_cote {
+				color: rgb(240, 240, 240);
+
+				text-align: center;
+				text-decoration: underline;
+			}
+
+			#test_alidade  #legende_alidade li:nth-child(5) {
+				border: none;
+			}
+
+			#legende_alidade {
+				margin-bottom: 10px;
+				text-align: left;
+			}
+
+
+			/*Choix de l'angle et de y*/
+			#parametre_alpha, #parametre_longueur_z {
+				text-align: center;
+				margin: auto;
+				width: 50%;
+
+				margin-top: 10px;
+			}
+
+			#parametre_alpha p:nth-of-type(1), #parametre_longueur_z p:nth-of-type(1) {
+				background-color: white;
+				border: 2px solid rgb(125, 169, 206);
+			}
+
+			#parametre_alpha p:nth-of-type(2), #parametre_longueur_z p:nth-of-type(2) {
+				text-decoration: underline;
+			}
+
+			#parametre_alpha:hover p:nth-of-type(1), #parametre_longueur_z:hover p:nth-of-type(1) {
+				background-color: rgb(240, 240, 240);
+			}
+
+			#parametre_alpha p:nth-of-type(2), #parametre_longueur_z p:nth-of-type(2) {
+				text-decoration: underline;
+				color: white;
+			}
+
+
+			/*Affichage de la formule*/
+			#resultat_alidade {
+				width: 50%;
+
+				margin: auto;
+				margin-top: 10px;
+			}
+
+			#resultat_alidade ul {
+				list-style-type: none;
+
+				border: 2px solid rgb(125, 169, 206);
+			}
+
+			#resultat_alidade ul li {
+				min-height: 25px;
+				padding-left: 5px;
+				border-bottom: 1px solid rgb(222, 222, 222);
+				background-color: white;
+			}
+
+			#resultat_alidade ul li:nth-child(5) {
+				border-bottom: none;
+			}
+
+			#resultat_alidade ul li:hover {
+				background-color: rgb(240, 240, 240);
+			}
+
