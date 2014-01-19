@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/page_style.css" />
+		<title>Test planisphere</title>
+
+
+		<style type="text/css">
+
+			/*Style général*/
+			figure {
+				background-color: rgb(34, 35, 37);
+				border-top: 1px solid rgb(255, 204, 0);
+				border-bottom: 1px solid rgb(255, 204, 0);
+
+				width: 100%;
+				min-width: 780px;
+
+				padding: 0;
+				margin: 0;
+				padding-top: 25px;
+				padding-bottom: 25px;
+
+				font-family: open_light, helvetica, verdana;
+			}		
+
+			figure * {
+				margin: 0;
+				padding: 0;
+			}
+
+
+				/*Stylisation des listes "choix-ville" et "choix_coordonnees"*/
+				#planisphere_choix {
+					min-width: 750px;
+					width: 750px;
+					min-height: 240px;
+
+					margin: auto;
+					margin-bottom: 25px;
+				}
+
+				#planisphere_choix_villes, #planisphere_choix_coordonnees {
+					width: 350px;
+				}
+
+				#planisphere_choix_villes {
+					float: right;
+				}
+
+				#planisphere_choix_villes ul li, #planisphere_choix_coordonnees ul li {
+					padding-left: 5px;
+				}
+
+				#planisphere_choix_villes ul, #planisphere_choix_coordonnees ul {
+					background-color: white;
+					border: 2px solid rgb(125, 169, 206);
+
+					list-style-type: none;
+				}
+
+				#planisphere_choix_coordonnees ul li {
+					background-color: white;
+					border-top: 1px solid rgb(222, 222, 222);
+				}
+
+				#planisphere_choix_coordonnees ul li:hover {
+					background-color: rgb(240, 240, 240);
+				}
+
+				.planisphere_choix_false {
+					background-color: white;
+					border-top: 1px solid rgb(222, 222, 222);
+				}
+
+				.planisphere_choix_false:hover {
+					background-color: rgb(240, 240, 240);
+				}
+
+				.planisphere_choix_true {
+					background-color: rgb(125, 169, 206);
+				}
+
+			
+				/*Stylisation de la carte et de ses contrôles*/ 
+				#planisphere_carte {
+					background-color: rgb(125, 169, 206);
+
+					position: relative;
+					clear: both;
+					overflow: hidden;
+
+					width: 1080px;
+					min-width: 1080px;
+					height: 540px;
+					min-height: 540px;
+
+					border: 2px solid rgb(125, 169, 206);
+					margin: auto;
+				}
+
+					/*Planisphère*/
+					.map {
+						position: absolute;
+
+						width: 5400px;
+						min-height: 2700px;
+						height: 100%;
+
+						background-image: url(images/partie2/planisphere.jpg);
+						background-repeat: no-repeat;
+
+						cursor : move;
+
+						moz-transform: scale(0.2);
+						o-transform: scale(0.2);
+						ms-transform: scale(0.2);
+						webkit-transform: scale(0.2);
+						transform: scale(0.2);
+
+						moz-transform-origin: top left;
+						o-transform-origin: top left;
+						ms-transform-origin: top left;
+						webkit-transform-origin: top left;
+						transform-origin: top left;
+
+						moz-transition: transform 2s linear;
+						o-transition: transform 2s linear;
+						ms-transition: transform 2s linear;
+						webkit-transition: transform 2s linear;
+						transition: transform 2s linear;
+					}
+
+						/*Point F*/
+						#point_f {
+							width: 45px;
+							min-width: 45px;
+							min-height: 45px;
+
+							background-color: green;
+							border-radius: 22px 22px 22px 22px;
+
+							position: absolute;
+							top: 1350px;
+							left: 2700px;
+
+							moz-transition: top 2s linear, left 2s linear;
+							o-transition: top 2s linear, left 2s linear;
+							ms-transition: top 2s linear, left 2s linear;
+							webkit-transition: top 2s linear, left 2s linear;
+							transition: top 2s linear, left 2s linear;
+						}
+
+							#point_f p {
+								background-color: white;
+								border: 1px solid rgb(125, 169, 206);
+
+								width: 50px;
+
+								position: relative;
+								top: 50px;
+							}
+
+							#point_f p:hover {
+								background-color: rgb(240, 240, 240);
+							}
+
+						/*Point ville*/
+						#point_ville {
+							width: 45px;
+							min-width: 45px;
+							min-height: 45px;
+
+							background-color: red;
+							border-radius: 22px 22px 22px 22px;
+
+							position: absolute;
+							top: 1350px;
+							left: 2700px;
+
+							display: none;
+
+							moz-transition: top 2s linear, left 2s linear;
+							o-transition: top 2s linear, left 2s linear;
+							ms-transition: top 2s linear, left 2s linear;
+							webkit-transition: top 2s linear, left 2s linear;
+							transition: top 2s linear, left 2s linear;
+						}
+
+							#point_ville p {
+								background-color: white;
+								border: 1px solid rgb(125, 169, 206);
+
+								width: 50px;
+
+								position: relative;
+								top: 50px;
+							}
+
+							#point_ville p:hover {
+								background-color: rgb(240, 240, 240);
+							}
+
+					/*Zoom et direction de la planisphère*/			
+					#controle_planisphere {
+						position: absolute;
+						z-index: 55;
+						top: 0px;
+						left: 0px;
+
+						width: 100%;
+						min-height: 25px;
+					}
+
+					#controle_planisphere form input[type="range"] {
+						position: relative;
+						top: 70px;
+						left: -70px;
+						transform: rotate(-90deg);
+					}
+
+
+				/*Stylisation de la légende de la carte*/
+				#planisphere_carte_legende {
+					position: relative;
+
+					width: 1080px;
+					min-width: 1080px;
+
+					background-color: white;
+
+					border: 2px solid rgb(125, 169, 206);
+					border-top: none;
+
+					margin: auto;
+				}
+
+					#planisphere_carte_legende p {
+						width: 100%;
+						border-bottom: 1px solid rgb(240, 240, 240);
+					}
+
+					#planisphere_carte_legende p:hover {
+						background-color: rgb(240, 240, 240);
+					}
+		</style>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery_drag.js"></script>
+		<script type="text/javascript">
+			
+			// Permet de drag
+			$(function() {
+				$( ".map" ).draggable();
+			});
+
+
+			// reset la position de la map
+			function reset_map() {
+				$('.map').css('left', 0 + 'px ');
+			    $('.map').css('top', 0 + 'px');
+			}
+
+
+			// Zoom sur la carte en fonction du range
+			function zoom_map(x) {
+				var zoom, pourcentage;
+				if (x <= 0) {
+					zoom = 0.2
+				}
+				else {
+					zoom = 0.1*x + 0.2;
+				}
+				$('.map').css('ms-transform', 'scale(' + zoom + ')');
+				$('.map').css('moz-transform', 'scale(' + zoom + ')');
+				$('.map').css('o-transform', 'scale(' + zoom + ')');
+				$('.map').css('webkit-transform', 'scale(' + zoom + ')');
+				$('.map').css('transform', 'scale(' + zoom + ')');
+
+				document.getElementById('planisphere_indicateur_zoom').value = x*10 + '%';
+			}
+
+
+			// Change la latitude du point à afficher
+			function update_latitude (x) {
+				document.getElementById('planisphere_set_latitude').value = x + '°';
+
+				var latitude;
+				latitude = x * (217/15);
+
+				update_coordonnees(latitude, 'lat');
+			}
+
+			// Change la longitude du point à afficher
+			function update_longitude (y, x) {
+				if (y < 0) {
+					document.getElementById('planisphere_set_longitude').value = -y + '°O';
+				}
+				else if ( y == 0){
+					document.getElementById('planisphere_set_longitude').value = 0;
+				}
+				else {
+					document.getElementById('planisphere_set_longitude').value = y + '°E';
+				}
+
+				var longitude;
+				longitude = y * (223/15);
+
+				update_coordonnees(longitude, 'long');
+			}
+
+			// Place le point F
+			function update_coordonnees(x, c) {
+				var j;
+				if (c == 'lat') {
+					j = 1350 - x;
+					document.getElementById('point_f').style.top = j + 'px';
+				}
+				else if (c == 'long') {
+					if (x >= 2670) {
+						x = 2650;
+					}
+					j = 2700 + x;
+					document.getElementById('point_f').style.left = j + 'px';
+				}
+			}
+
+			// Localisation d'une ville
+			function update_ville(latitude, longitude, id) {
+				var i, j;
+				longitude = longitude * (223/15);
+				latitude = latitude * (217/15);
+
+				document.getElementById('point_ville').style.display = 'block';
+
+				i = 1350 - latitude;
+				document.getElementById('point_ville').style.top = i + 'px';
+
+				if (longitude >= 2670) {
+					longitude = 2650;
+				}
+				j = 2700 + longitude;
+				document.getElementById('point_ville').style.left = j + 'px';
+
+					document.getElementById('Paris').className = 'planisphere_choix_false';
+					document.getElementById('New-York').className = 'planisphere_choix_false';
+					document.getElementById('Tokyo').className = 'planisphere_choix_false';
+					document.getElementById('Londres').className = 'planisphere_choix_false';
+					document.getElementById('Moscou').className = 'planisphere_choix_false';
+					document.getElementById('Los-Angeles').className = 'planisphere_choix_false';
+					document.getElementById('Rio-de-Janeiro').className = 'planisphere_choix_false';
+					document.getElementById('Canberra').className = 'planisphere_choix_false';
+					document.getElementById('Espalion').className = 'planisphere_choix_false';
+
+				document.getElementById(id).className = 'planisphere_choix_true';
+				document.getElementById('texte_point_ville').innerHTML = id;
+			}
+		</script>
+
+	</head>
+
+
+
+	<body>
+		<figure id="figure_planisphere">
+
+
+			<!-- Premiers choix de points à localiser sur la carte -->
+			<div id="planisphere_choix">
+
+				<!-- Choix d'une ville à localiser -->
+				<div id="planisphere_choix_villes">
+
+					<ul>
+						<li>Choisissez une ville à localiser en cliquant sur son nom</li>
+						<li id="Paris" class="planisphere_choix_false" onclick="update_ville(51.5, 0.9, this.id)"> 
+							Paris
+						</li>
+						<li id="New-York" class="planisphere_choix_false" onclick="update_ville(47, -73, this.id)"> 
+							New-York
+						</li>
+						<li id="Tokyo" class="planisphere_choix_false" onclick="update_ville(38, 139.5, this.id)"> 
+							Tokyo 
+						</li>
+						<li id="Londres" class="planisphere_choix_false" onclick="update_ville(55, -0.5, this.id)"> 
+							Londres 
+						</li>
+						<li id="Moscou" class="planisphere_choix_false" onclick="update_ville(56, 25, this.id)">
+							Moscou 
+						</li>
+						<li id="Los-Angeles" class="planisphere_choix_false" onclick="update_ville(36.5, -120, this.id)">
+							Los-Angeles
+						</li>
+						<li id="Rio-de-Janeiro" class="planisphere_choix_false" onclick="update_ville(-22, -45, this.id)"> 
+							Rio de Janeiro 
+						</li>
+						<li id="Canberra" class="planisphere_choix_false" onclick="update_ville(-35, 149, this.id)"> 
+							Canberra 
+						</li>
+						<li id="Espalion" class="planisphere_choix_false" onclick="update_ville(47, 0.5, this.id)"> 
+							Espalion 
+						</li>
+					</ul>
+
+				</div>
+
+				<!-- Choix d'un couple de coordonnées -->
+				<div id="planisphere_choix_coordonnees">
+					<form method="get" name="choix_coordonnees_planisphere" action="partie1.html">
+
+						<ul>
+							<li>
+								Choisissez des coordonnées afin de localiser un point F
+							</li>
+							<li> 
+								<input type="text" size="3" value="0°" id="planisphere_set_longitude" name="planisphere_set_longitude" />
+								-180°
+								<input type="range" name="longitude" id="longitude" value="0" min="-180" max="180" onchange="update_longitude(this.value, document.getElementById('latitude').value)"/>
+								+180°
+								<label for="longitude">Choisissez la longitude</label> 
+							</li>
+							<li> 
+								<input type="text" size="2" value="90°" id="planisphere_set_latitude" name="planisphere_set_latitude" />
+								-90° 
+								<input type="range" name="latitude" id="latitude" value="0" min="-90" max="90" onchange="update_latitude(this.value)"/> 
+								+90° 
+								<label for="latitude">Choisissez la latitude</label> 
+							</li>
+						</ul>
+
+					</form>
+				</div>
+
+			</div>
+				
+
+			<!--Carte et contrôles-->
+			<div id="planisphere_carte" ondblclick="reset_map()">
+
+				<div id="controle_planisphere">
+					<form method="get" name="controle_planisphere" action="partie1.html">
+						<p>
+							<input type="text" size="3" value="0%" id="planisphere_indicateur_zoom" name="planisphere_indicateur_zoom" />
+						</p>
+						<p>
+							<input type="range" name="planisphere_zoom" class="planisphere_zoom" value="0" min="0" max="10" onchange="zoom_map(this.value)" />
+						</p>
+					</form>
+				</div>
+
+				<div class="map">
+					<div id="point_f">	<p id="texte_point_f">Point F</p> </div>
+					<div id="point_ville"> <p id="texte_point_ville">New-York</p> </div>
+				</div>
+
+			</div>
+
+			<!-- Légende carte -->
+			<div id="planisphere_carte_legende">
+				<p>
+					Pour agrandir et rétressir la carte, vous pouvez utiliser le curseur en haut à gauche. Déplacez le vers le haut pour zoomer et vers le bas pour "dé-zoomer".
+				</p>
+				<p>
+					Pour déplacer la carte, cliquez et faites glisser la souris.
+				</p>
+				<p>
+					Si la carte n'est plus visible ou que vous voulez rafficher sa position de départ, double-cliquez dessus.
+				</p>
+			</div>
+
+
+		</figure>
+	</body>
+
+
+
+</html>
